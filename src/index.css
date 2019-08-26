@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute
+}
+.remove{
+  animation-name: remove;
+  animation-duration: 1000ms
+}
+.insert{
+  animation-name: insert;
+  animation-duration: 1000ms
+}
+.center {
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.top {
+  position: absolute;
+  z-index: 101;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.button {
+  opacity: 0;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+  overflow: auto;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 300ms;
+}
+.title,.album,.artist {
+  opacity: 0;
+  background-color: rgba(75, 75, 75, 0.5)
+}
+.center {
+  color: white;
+  display:  flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+body:hover .button,
+body:hover .title,
+body:hover .album,
+body:hover .artist{
+  opacity: 1;
+}
+.button:hover {
+  transform: scale(1.2)
+}
+@keyframes remove {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes insert {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

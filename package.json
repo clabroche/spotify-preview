@@ -1,0 +1,32 @@
+{
+  "name": "spotify-preview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "build": {
+    "appId": "wallpaper",
+    "mac": {
+      "category": "image.wallpaper"
+    }
+  },
+  "scripts": {
+    "start": "electron .",
+    "dev": "NODE_ENV=true npm run start",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -l --x64"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.6.3",
+    "axios": "^0.19.0",
+    "carlo": "^0.9.43",
+    "fs-extra": "^7.0.1",
+    "nodemon": "^1.18.9",
+    "rxjs": "^6.3.3"
+  },
+  "devDependencies": {
+    "electron": "^4.0.1",
+    "electron-builder": "^20.38.5"
+  }
+}
