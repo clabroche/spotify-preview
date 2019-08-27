@@ -1,15 +1,18 @@
 const electron = require('electron')
-
+const {execSync, exec} = require('child_process')
 const fse = require('fs-extra')
 const helpers = require('./src/helpers')
 try { require('./config.json') }
 catch (_) { fse.copyFileSync('./config.dist.json', 'config.json')}
 const config = require('./config.json')
 
-process.title = "wallpaper.js"
+process.title = "spotify-preview.js"
 try {
   fse.mkdirSync(helpers.imgPath)
 } catch (_) {}
+let spotifyProcess
+
+
 
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
@@ -42,7 +45,7 @@ async function createWindow() {
       nodeIntegration: true
     }
   })
-
+  
   mainWindow.loadURL(`file://${__dirname}/src/index.html`)
   if(process.env.NODE_ENV) 
     mainWindow.webContents.openDevTools()
@@ -82,13 +85,24 @@ async function createWindow() {
   })
 }
 
-if (!config.window.hide) {
-  app.on('ready', createWindow)
-} else {
-  const wallpaper = require('./src/wallpaper')
-  wallpaper.launch()
-}
+
+exec(`dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'PlaybackStatus'`, 
+{timeout: 100}
+,(err,stdout, stderr) => {
+  if(err) {
+    spotifyProcess = exec('spotify', {killSignal: "SIGKILL"})
+    setTimeout(_ => {
+      createWindow()
+    }, 1000)
+  } else {
+    app.on('ready', createWindow)
+  }
+})
+
 app.on('window-all-closed', function () {
+  if(spotifyProcess) {
+    exec('pkill spotify')
+  }
   if (process.platform !== 'darwin') {
     app.quit()
   }

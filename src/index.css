@@ -51,9 +51,28 @@ img {
   align-items: center;
   transition: 300ms;
 }
-.title,.album,.artist {
+.infos {
   opacity: 0;
-  background-color: rgba(75, 75, 75, 0.5)
+  background-color: rgba(45,45,45,0.8);
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 10px;
+  transition: 300ms;
+}
+.title {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.album {
+  font-size: 1.1em;
+}
+.actions {
+  display: flex;
+  margin-bottom: 30px;
+}
+.actions .button {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .center {
   color: white;
@@ -61,12 +80,9 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 body:hover .button,
-body:hover .title,
-body:hover .album,
-body:hover .artist{
+body:hover .infos{
   opacity: 1;
 }
 .button:hover {

@@ -4,7 +4,6 @@ const config = require('../config.json')
 const helpers = {
   trigger(infos) {
     if(!infos) return
-    console.log(infos)
     const body = document.querySelector('body')
     const img = document.querySelector('img')
     img.classList.add('remove')

@@ -28,5 +28,3 @@ function formatDBUS(string) {
   })
   return obj
 }
-
-console.log(getInfos())

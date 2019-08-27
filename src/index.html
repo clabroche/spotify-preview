@@ -13,18 +13,28 @@
   <div class="top">
     <div></div>
     <div>
-      <div class="button" onclick="openSettings()">
+      <!-- <div class="button" onclick="openSettings()">
         <i class="fas fa-cog"></i>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="center">
-    <div class="button" onclick="enlarge()">
-      <i class="fas fa-expand-arrows-alt"></i>
+    <div class="actions">
+      <div class="button" id="previous" onclick="previous()">
+        <i class="fas fa-backward"></i>
+      </div>
+      <div class="button" id="playPause" onclick="playPause()">
+        <i class="fas fa-pause"></i>
+      </div>
+      <div class="button" id="next" onclick="next()">
+        <i class="fas fa-forward"></i>
+      </div>
     </div>
-    <div class="title"></div>
-    <div class="album"></div>
-    <div class="artist"></div>
+    <div class="infos">
+      <div class="title"></div>
+      <div class="album"></div>
+      <div class="artist"></div>
+    </div>
   </div>
   <script src="index.js"></script>
 </body>
