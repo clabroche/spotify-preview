@@ -4,16 +4,32 @@
   "description": "",
   "main": "index.js",
   "build": {
-    "appId": "wallpaper",
+    "artifactName": "spotify-preview.${ext}",
+    "appId": "spotify-preview",
     "mac": {
-      "category": "image.wallpaper"
+      "category": "music"
+    },
+    "linux": {
+      "protocols": {
+        "name": "SpotifyPreview",
+        "schemes": [
+          "spotifypreview"
+        ]
+      },
+      "target": [
+        "AppImage"
+      ],
+      "desktop": {
+        "Icon": "spotifypreview"
+      },
+      "category": "Music"
     }
   },
   "scripts": {
     "start": "electron .",
     "dev": "NODE_ENV=true npm run start",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder -l --x64"
+    "dist": "electron-builder build --linux --x64"
   },
   "author": "",
   "license": "ISC",
