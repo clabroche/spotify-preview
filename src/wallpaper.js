@@ -21,11 +21,10 @@ wallpaper.set = async function() {
 let cache = ""
 function refresh() {
   wallpaper.set().then(art => {
-    if(cache !== art.trackId) {
+    if(cache !== art.trackid) {
       subject.next(art)
-      cache = art.trackId
+      cache = art.trackid
     }
-
   })
 }
 module.exports = wallpaper
