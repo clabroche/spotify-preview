@@ -15,6 +15,9 @@ function setCorrectStatus() {
     button.classList.replace('fa-pause', 'fa-play')
   }
 }
+setInterval(() => {
+  setCorrectStatus()
+}, 500);
 setCorrectStatus()
 function enlarge() {
   ipcRenderer.send('fullscreen')

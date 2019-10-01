@@ -27,8 +27,8 @@ async function createWindow() {
   })
   mainWindow.loadURL(`file://${__dirname}/src/index.html`)
   mainWindow.on('closed', () => mainWindow = null)
-  if(process.env.NODE_ENV) 
-  mainWindow.webContents.openDevTools()
+  if(process.env.NODE_ENV === 'DEV') 
+    mainWindow.webContents.openDevTools()
 }
 
 
