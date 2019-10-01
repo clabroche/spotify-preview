@@ -1,4 +1,3 @@
-const pathfs = require('path')
 const config = require('../config.json')
 
 const helpers = {

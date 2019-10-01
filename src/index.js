@@ -23,7 +23,9 @@ function openSettings() {
   ipcRenderer.send('openSettings')
 }
 
-
+function openSpotify() {
+  execSync('wmctrl -x -a spotify.Spotify')
+}
 function playPause() {
   execSync('dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause')
   setTimeout(_ => {
