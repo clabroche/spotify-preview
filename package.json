@@ -1,6 +1,6 @@
 {
   "name": "spotify-preview",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "Simple external spotify viewer",
   "author": {
     "name": "clabroche",
@@ -18,10 +18,11 @@
   "main": "./src/background.js",
   "build": {
     "linux": {
-          "target": ["AppImage"
+      "target": [
+        "AppImage"
       ],
-          "icon": "icon",
-          "category": "Music"
+      "icon": "icon",
+      "category": "Music"
     }
   },
   "dependencies": {
