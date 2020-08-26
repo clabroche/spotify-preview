@@ -1,7 +1,7 @@
 const electron = require('electron')
 const {exec} = require('child_process')
 const config = require('./config.json')
-
+const path = require('path')
 process.title = "spotify-preview.js"
 let spotifyProcess
 
@@ -21,6 +21,7 @@ async function createWindow() {
     y: screen.height,
     frame: false,
     alwaysOnTop: true,
+    icon: path.join(__dirname, 'build', 'icons', '256x256.png'),
     webPreferences: {
       nodeIntegration: true
     }

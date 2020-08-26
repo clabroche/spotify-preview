@@ -3,6 +3,19 @@
   "version": "1.1.5",
   "description": "",
   "main": "index.js",
+  "author": {
+    "name": "clabroche",
+    "email": "corentinlabroche@gmail.com"
+  },
+  "homepage": "https://github.com/clabroche/spotify-preview",
+  "repository": "https://github.com/clabroche/spotify-preview",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "NODE_ENV=true npm run start",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder build --linux --x64"
+  },
   "build": {
     "artifactName": "spotify-preview.${ext}",
     "appId": "spotify-preview",
@@ -20,29 +33,21 @@
         "AppImage"
       ],
       "desktop": {
-        "Icon": "spotifypreview"
+        "Icon": "spotify.png"
       },
       "category": "Music"
     }
   },
-  "scripts": {
-    "start": "electron .",
-    "dev": "NODE_ENV=true npm run start",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder build --linux --x64"
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.6.3",
-    "axios": "^0.19.0",
-    "carlo": "^0.9.43",
-    "fs-extra": "^7.0.1",
-    "nodemon": "^1.18.9",
-    "rxjs": "^6.3.3"
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "axios": "^0.20.0",
+    "carlo": "^0.9.46",
+    "fs-extra": "^9.0.1",
+    "rxjs": "^6.6.2"
   },
   "devDependencies": {
-    "electron": "^4.0.1",
-    "electron-builder": "^20.38.5"
+    "electron": "^10.0.0",
+    "electron-builder": "^22.8.0",
+    "nodemon": "^2.0.4"
   }
 }
