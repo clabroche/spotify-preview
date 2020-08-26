@@ -1,0 +1,52 @@
+<template>
+  <div class="overlay">
+    <open-spotify></open-spotify>
+    <play-actions></play-actions>
+    <music-infos></music-infos>
+  </div>  
+</template>
+
+<script>
+import music from '../services/music'
+import PlayActionsVue from './PlayActions.vue'
+import MusicInfosVue from './MusicInfos.vue'
+import OpenSpotifyVue from './OpenSpotify.vue'
+export default {
+  components: {
+    playActions: PlayActionsVue,
+    musicInfos: MusicInfosVue,
+    openSpotify: OpenSpotifyVue
+  },
+  data() {
+    return {
+      music
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.overlay {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  transition: 300ms;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
+  @supports (backdrop-filter: blur(10px)) {
+    & {
+      backdrop-filter: blur(10px);
+    }
+  }
+}
+</style>

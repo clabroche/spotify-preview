@@ -1,53 +1,69 @@
 {
   "name": "spotify-preview",
   "version": "1.1.7",
-  "description": "",
-  "main": "index.js",
+  "description": "Simple external spotify viewer",
   "author": {
     "name": "clabroche",
     "email": "corentinlabroche@gmail.com"
   },
-  "homepage": "https://github.com/clabroche/spotify-preview",
-  "repository": "https://github.com/clabroche/spotify-preview",
-  "license": "MIT",
   "scripts": {
-    "start": "electron .",
+    "serve": "vue-cli-service electron:serve",
+    "build": "vue-cli-service electron:build",
+    "lint": "vue-cli-service lint",
     "dev": "NODE_ENV=true npm run start",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder build --linux --x64"
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "start": "electron ."
   },
-  "build": {
-    "artifactName": "spotify-preview.${ext}",
-    "appId": "spotify-preview",
-    "mac": {
-      "category": "music"
-    },
-    "linux": {
-      "protocols": {
-        "name": "SpotifyPreview",
-        "schemes": [
-          "spotifypreview"
-        ]
-      },
-      "target": [
-        "AppImage"
-      ],
-      "desktop": {
-        "Icon": "spotify.png"
-      },
-      "category": "Music"
-    }
-  },
+  "main": "background.js",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "axios": "^0.20.0",
     "carlo": "^0.9.46",
+    "command-exists": "^1.2.9",
+    "core-js": "^3.6.5",
     "fs-extra": "^9.0.1",
-    "rxjs": "^6.6.2"
+    "rxjs": "^6.6.2",
+    "vue": "^3.0.0-0",
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "^4.5.4",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0-0",
+    "babel-eslint": "^10.1.0",
     "electron": "^10.0.0",
     "electron-builder": "^22.8.0",
-    "nodemon": "^2.0.4"
-  }
+    "electron-devtools-installer": "^3.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0-0",
+    "nodemon": "^2.0.4",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.1",
+    "vue-cli-plugin-electron-builder": "^2.0.0-rc.4"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "homepage": "https://github.com/clabroche/spotify-preview",
+  "license": "MIT",
+  "repository": "https://github.com/clabroche/spotify-preview"
 }

@@ -53,7 +53,7 @@ async function isSpotifyLaunched() {
   });
 }
 
-;(async _ => {
+(async _ => {
   if(!(await isSpotifyLaunched())) {
     spotifyProcess = exec('spotify', {killSignal: "SIGKILL"})
     setTimeout(createWindow, 1000)
