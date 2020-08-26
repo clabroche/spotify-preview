@@ -16,6 +16,14 @@
     "start": "electron ."
   },
   "main": "./src/background.js",
+  "build": {
+    "linux": {
+          "target": ["AppImage"
+      ],
+          "icon": "icon",
+          "category": "Music"
+    }
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "axios": "^0.20.0",
