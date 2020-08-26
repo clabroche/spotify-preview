@@ -15,7 +15,7 @@
     "postuninstall": "electron-builder install-app-deps",
     "start": "electron ."
   },
-  "main": "background.js",
+  "main": "./src/background.js",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "axios": "^0.20.0",
