@@ -30,12 +30,12 @@ If you feel like it, send me pull requests for other platforms.
 
 Serve:
 ``` bash
-npm run serve
+npm run serve:electron
 ```
 
 Build:
 ``` bash
-npm run build
+npm run build:electron
 ```
 
 Deploy:

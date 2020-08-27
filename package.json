@@ -7,8 +7,8 @@
     "email": "corentinlabroche@gmail.com"
   },
   "scripts": {
-    "serve": "vue-cli-service electron:serve",
-    "build": "vue-cli-service electron:build",
+    "serve:electron": "vue-cli-service electron:serve",
+    "build:electron": "vue-cli-service electron:build",
     "lint": "vue-cli-service lint",
     "dev": "NODE_ENV=true npm run start",
     "postinstall": "electron-builder install-app-deps",
