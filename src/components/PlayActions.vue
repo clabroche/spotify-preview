@@ -9,21 +9,22 @@
 
 <script>
 import ButtonVue from './Button.vue'
-import music from '../services/music'
+import Connector from '../services/Connector'
 export default {
   components: {
     buttonCmp: ButtonVue
   },
   data() {
     return {
-      music
+      action: Connector.instance,
+      music: Connector.music
     }
   },
   methods: {
-    backward() {music.backward()},
-    pause() {music.pause()},
-    play() {music.play()},
-    forward() {music.forward()},
+    backward() {this.action.backward()},
+    pause() {this.action.pause()},
+    play() {this.action.play()},
+    forward() {this.action.forward()},
   }
 }
 </script>

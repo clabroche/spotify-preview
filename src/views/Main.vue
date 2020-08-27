@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import music from '../services/music'
 import BackgroundMusicVue from '../components/BackgroundMusic.vue';
 import OverlayInfosVue from '../components/OverlayInfos.vue';
+import Connector from '../services/Connector';
 export default {
   name: 'Main',
   components: {
@@ -19,15 +19,13 @@ export default {
   },
   data() {
     return {
-      music,
+      music: Connector.music,
       openOverlay: false
     }
   },
   mounted() {
-    this.interval = setInterval(()=> {
-      music.fetch()
-      this.$forceUpdate()
-    }, 1000);
+    Connector.update()
+    this.interval = setInterval(() => Connector.update(), 1000);
   },
   unmounted() {
     clearInterval(this.interval)

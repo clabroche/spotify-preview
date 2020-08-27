@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import music from '../services/music'
+import connector from '../services/Connector'
 import PlayActionsVue from './PlayActions.vue'
-import MusicInfosVue from './MusicInfos.vue'
 import OpenSpotifyVue from './OpenSpotify.vue'
+import MusicInfosVue from './MusicInfos.vue'
 export default {
   components: {
     playActions: PlayActionsVue,
@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      music
+      connector
     }
   }
 }

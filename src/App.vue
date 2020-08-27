@@ -3,8 +3,18 @@
     <router-view/>
   </div>
 </template>
+
 <script>
+import Connector from './services/Connector'
+
+export default {
+  mounted() {
+    if(!Connector.instance) this.$router.push({name: 'connector-chooser'})
+    else this.$router.push({name: 'main'})
+  }
+}
 </script>
+
 <style>
 @import url('~@fortawesome/fontawesome-free/css/all.min.css');
 

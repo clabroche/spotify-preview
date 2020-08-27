@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import music from '../services/music'
+import Connector from '../services/Connector'
 export default {
   data() {
     return {
-      music
+      music: Connector.music
     }
   }
 }
