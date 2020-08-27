@@ -7,7 +7,7 @@
 
 <script>
 import ButtonVue from './Button.vue'
-import music from '../services/music'
+import connector from '../services/Connector'
 import commandExists from 'command-exists';
 
 export default {
@@ -27,9 +27,9 @@ export default {
         setTimeout(() => this.error = '', 1000);
         return 
       }
-      music.openSpotify()
+      connector.instance.openSpotify()
         .catch(err => {
-          console.log(err)
+          console.error(err)
         })
     }
   }

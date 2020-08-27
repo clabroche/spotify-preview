@@ -8,7 +8,7 @@ const path = require('path')
 const { exec } = require('child_process')
 const isDevelopment = process.env.NODE_ENV !== 'production'
 const electron = require('electron')
-
+require('./oauth/server')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
@@ -84,7 +84,7 @@ app.on('ready', async () => {
     spotifyProcess = exec('spotify', { killSignal: "SIGKILL" })
     setTimeout(createWindow, 1000)
   } else {
-    app.on('ready', createWindow)
+    createWindow()
   }
 })
 
