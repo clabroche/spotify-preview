@@ -1,6 +1,6 @@
 {
   "name": "spotify-preview",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "Simple external spotify viewer",
   "author": {
     "name": "clabroche",
@@ -15,7 +15,16 @@
     "postuninstall": "electron-builder install-app-deps",
     "start": "electron ."
   },
-  "main": "background.js",
+  "main": "./src/background.js",
+  "build": {
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "icon",
+      "category": "Music"
+    }
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "axios": "^0.20.0",
