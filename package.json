@@ -7,24 +7,15 @@
     "email": "corentinlabroche@gmail.com"
   },
   "scripts": {
-    "serve:electron": "vue-cli-service electron:serve",
-    "build:electron": "vue-cli-service electron:build",
+    "serve": "vue-cli-service electron:serve",
+    "build": "vue-cli-service electron:build",
     "lint": "vue-cli-service lint",
     "dev": "NODE_ENV=true npm run start",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
     "start": "electron ."
   },
-  "main": "./src/background.js",
-  "build": {
-    "linux": {
-      "target": [
-        "AppImage"
-      ],
-      "icon": "icon",
-      "category": "Music"
-    }
-  },
+  "main": "./background.js",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "axios": "^0.20.0",
