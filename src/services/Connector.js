@@ -8,6 +8,7 @@ function Connector() {
   this.music = reactive({
     seekPosition: 0,
     isPlaying: false,
+    duration: -1,
     volume: -1,
     trackid: '',
     album: '',
@@ -31,6 +32,7 @@ Connector.prototype.update = async function () {
   await this.instance.tick()
 
   this.music.seekPosition = await this.instance.getSeekPosition()
+  this.music.duration = await this.instance.getDuration()
   this.music.volume = await this.instance.getVolume()
   this.music.trackid = await this.instance.getTrackId()
   this.music.album = await this.instance.getAlbum()
@@ -47,6 +49,7 @@ export default reactive(new Connector())
 /**
  * @typedef {Object} DbusMusicInfos
  * @property {number} seekPosition
+ * @property {number} duration
  * @property {number} volume
  * @property {string} albumArtist
  * @property {boolean} isPlaying
@@ -60,10 +63,11 @@ export default reactive(new Connector())
 
 /**
   * @typedef {Object} ConnectorFunction
-  * @property {function(): Promise<void>} init
+  * @property {function(Window): Promise<void>} init
   * 
   * @property {function(): Promise<number>} getSeekPosition
   * @property {function(): Promise<boolean>} getIsPlaying
+  * @property {function(): Promise<number>} getDuration
   * @property {function(): Promise<number>} getVolume
   * @property {function(): Promise<string>} getArtURL
   * @property {function(): Promise<string>} getTrackId
@@ -71,12 +75,13 @@ export default reactive(new Connector())
   * @property {function(): Promise<string>} getArtist
   * @property {function(): Promise<string>} getTitle
   * 
-  * @property {function(): Promise<void>} openSpotify
-  * @property {function(): Promise<void>} backward
-  * @property {function(): Promise<void>} forward
-  * @property {function(): Promise<void>} pause
-  * @property {function(): Promise<void>} play
-  * @property {function(): Promise<void>} play
+  * @property {function(number): Promise<any>} setSeekPosition
+  * @property {function(): Promise<any>} openSpotify
+  * @property {function(): Promise<any>} backward
+  * @property {function(): Promise<any>} forward
+  * @property {function(): Promise<any>} pause
+  * @property {function(): Promise<any>} play
+  * @property {function(): Promise<any>} play
   * 
-  * @property {function(): Promise<void>} tick
+  * @property {function(): Promise<any>} tick
   */

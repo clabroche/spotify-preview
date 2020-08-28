@@ -2,11 +2,13 @@ import Spotify from 'spotify-web-api-js'
 import { execSync } from 'child_process'
 let spotify = new Spotify();
 import Axios from 'axios'
+import sdkConnector from '../sdkConnector';
 /** @type {import('../Connector').DbusMusicInfos} */
 let infos = {
   seekPosition: 0,
   isPlaying: false,
   albumArtist: '',
+  duration: -1,
   volume: -1,
   trackid: '',
   album: '',
@@ -31,6 +33,7 @@ const SpotifyCloud = {
   },
   // Getter 
   async getSeekPosition() { return infos.seekPosition},
+  async getDuration() { return infos.duration },
   async getIsPlaying() { return infos.isPlaying},
   async getVolume() { return infos.volume},
   async getTrackId() { return infos.trackid},
@@ -40,6 +43,12 @@ const SpotifyCloud = {
   async getTitle() { return infos.title},
   
   // Action
+  async setSeekPosition(ms) {
+    const seekPostion = Math.floor(ms)
+    await spotify.seek(seekPostion)
+    infos.seekPosition = seekPostion
+    sdkConnector.forceUpdate.next()
+  },
   async openSpotify() { execSync('wmctrl -x -a spotify.Spotify')},
   async backward() { return spotify.skipToPrevious()},
   async forward() { return spotify.skipToNext()},
@@ -60,7 +69,7 @@ const SpotifyCloud = {
       infos.isPlaying = track.is_playing
       infos.seekPosition = track.progress_ms
       infos.title = track.item.name
-      console.log(infos.isPlaying)
+      infos.duration = track.item.duration_ms
     }
   },
 }

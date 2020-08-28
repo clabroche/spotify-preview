@@ -3,6 +3,7 @@
     <transition name="fade">
       <background-music :key="music.artUrl"/>
     </transition>
+    <seek-background></seek-background>
     <overlay-infos/>
   </div>
 </template>
@@ -11,11 +12,13 @@
 import BackgroundMusicVue from '../components/BackgroundMusic.vue';
 import OverlayInfosVue from '../components/OverlayInfos.vue';
 import Connector from '../services/Connector';
+import SeekBackgroundVue from '../components/SeekBackground.vue';
 export default {
   name: 'Main',
   components: {
     backgroundMusic: BackgroundMusicVue,
-    overlayInfos: OverlayInfosVue
+    overlayInfos: OverlayInfosVue,
+    seekBackground:SeekBackgroundVue
   },
   data() {
     return {

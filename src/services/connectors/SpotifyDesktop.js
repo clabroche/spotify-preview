@@ -6,6 +6,7 @@ let infos = {
   seekPosition: 0,
   isPlaying: false,
   albumArtist: '',
+  duration: -1,
   volume: -1,
   trackid: '',
   album: '',
@@ -26,6 +27,7 @@ const SpotifyDesktop = {
       .trim()
     return status === 'Playing' 
   },
+  async getDuration() { return infos.duration },
   async getVolume() { return infos.volume },
   async getTrackId() { return infos.trackid },
   async getArtURL() { return infos.artUrl },
@@ -34,6 +36,9 @@ const SpotifyDesktop = {
   async getTitle() { return infos.title },
 
   // Actions
+  async setSeekPosition(ms) {
+    return ms
+  },
   async backward () {
     execSync('dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous')
   },
