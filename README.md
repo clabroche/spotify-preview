@@ -5,7 +5,8 @@ Show what you listen to in all circumstances
 ## Features
 - Stay in the foreground 
 - Starts Spotify if it is not started
-- Control Spotify if it is started
+- Control Spotify if it is started with dbus (regular account)
+- Control Spotify with WebAPI (you need a client_id and a client_secret on developer [dashboard](https://developer.spotify.com/dashboard/applications) with your premium account)
 - Show album cover
 - Show artist name
 - Show album name
@@ -20,7 +21,7 @@ Show what you listen to in all circumstances
 ![overlay](./Readme/overlay.png)
 
 ## Download
-- Go to github realease page
+- Go to [github realease page]([https://link](https://github.com/clabroche/spotify-preview/releases))
 - Download appImage
 
 ## Developpement
