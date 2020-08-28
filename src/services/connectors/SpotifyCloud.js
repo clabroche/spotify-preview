@@ -1,7 +1,6 @@
 import Spotify from 'spotify-web-api-js'
 import { execSync } from 'child_process'
 let spotify = new Spotify();
-
 import Axios from 'axios'
 /** @type {import('../Connector').DbusMusicInfos} */
 let infos = {
@@ -22,14 +21,13 @@ const SpotifyCloud = {
   async init(window) {
     const url = `http://localhost:5000/login?client_id=${localStorage.getItem('client_id')}&client_secret=${localStorage.getItem('client_secret')}`
     const windowopened = window.open(url, '_blank')
-    const token = await pollOauth()
+    await pollOauth()
     windowopened.close()
-    spotify.setAccessToken(token)
 
     const {devices} = await spotify.getMyDevices()
-
-    console.log(devices[0].id)
-    await spotify.transferMyPlayback([devices[0].id]).catch(err => console.log(err.response))
+    if (devices[0]) {
+      await spotify.transferMyPlayback([devices[0].id])
+    }
   },
   // Getter 
   async getSeekPosition() { return infos.seekPosition},
@@ -67,13 +65,15 @@ const SpotifyCloud = {
   },
 }
 
+let interval
 function pollOauth() {
+  clearInterval(interval)
   return new Promise((resolve) => {
-    const interval = setInterval(async() => {
-      const {data: token} = await Axios.get('http://localhost:5000/poll-token')
-      if(token) {
-        resolve(token)
-        clearInterval(interval)
+    interval = setInterval(async() => {
+      const {data: tokenFromServer} = await Axios.get('http://localhost:5000/poll-token')
+      if(tokenFromServer) {
+        resolve(tokenFromServer)
+        spotify.setAccessToken(tokenFromServer)
       }
     }, 1000);
   })
