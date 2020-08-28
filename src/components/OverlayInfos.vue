@@ -42,7 +42,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 1;
+  opacity: 0;
   &:hover {
     opacity: 1;
   }
