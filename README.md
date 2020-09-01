@@ -21,7 +21,7 @@ Show what you listen to in all circumstances
 ![overlay](./Readme/overlay.png)
 
 ## Download
-- Go to [github realease page]([https://link](https://github.com/clabroche/spotify-preview/releases))
+- Go to [github realease page](https://github.com/clabroche/spotify-preview/releases)
 - Download appImage
 
 ## Developpement
