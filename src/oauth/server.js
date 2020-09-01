@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const request = require('request');
 const { default: Axios } = require('axios');
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 let client_id
 let client_secret

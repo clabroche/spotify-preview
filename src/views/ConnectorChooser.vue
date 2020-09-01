@@ -2,7 +2,7 @@
   <div class="connector-chooser-root">
     <h1>Choose your connector</h1>
     <div class="connectors">
-      <connector-chooser-card v-for="connector of connectors" :key="connector.name"
+      <connector-chooser-card v-for="connector of connectorsAvailable" :key="connector.name"
         @click="setConnector(connector.connector)"
         :needOauth="connector.needOauth"
         :icon='connector.icon'
@@ -16,6 +16,7 @@ import ConnectorChooserCardVue from '../components/ConnectorChooserCard.vue'
 import ConnectorSpotifyCloud from '../services/connectors/SpotifyCloud'
 import ConnectorSpotifyDesktop from '../services/connectors/SpotifyDesktop'
 import Connector from '../services/Connector'
+import os from 'os'
 export default {
   components: {
     connectorChooserCard: ConnectorChooserCardVue
@@ -25,13 +26,20 @@ export default {
       connectors: [{
         text: 'Spotify Desktop',
         icon: 'fab fa-spotify',
+        condition: os.platform() !== "win32",
         connector: ConnectorSpotifyDesktop ,
       }, {
         text: 'Spotify Cloud',
         icon: 'fab fa-spotify',
+        condition: true,
         connector: ConnectorSpotifyCloud ,
         needOauth: true
       }]
+    }
+  },
+  computed: {
+    connectorsAvailable() {
+      return this.connectors.filter(connector => connector.condition)
     }
   },
   mounted() {

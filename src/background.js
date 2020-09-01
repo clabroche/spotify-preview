@@ -8,6 +8,7 @@ const path = require('path')
 const { exec } = require('child_process')
 const isDevelopment = process.env.NODE_ENV !== 'production'
 const electron = require('electron')
+const os = require('os')
 require('./oauth/server')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -26,8 +27,8 @@ function createWindow() {
   win = new BrowserWindow({
     width: config.window.width,
     height: config.window.height,
-    x: screen.width,
-    y: screen.height,
+    x: screen.width - config.window.width,
+    y: screen.height - config.window.height,
     frame: false,
     alwaysOnTop: true,
     icon: path.join(__dirname, 'build', 'icons', '256x256.png'),
@@ -80,7 +81,7 @@ app.on('ready', async () => {
       console.error('Vue Devtools failed to install:', e.toString())
     }
   }
-  if (!(await isSpotifyLaunched())) {
+  if (os.platform() !== "win32" && !(await isSpotifyLaunched())) {
     spotifyProcess = exec('spotify', { killSignal: "SIGKILL" })
     setTimeout(createWindow, 1000)
   } else {
