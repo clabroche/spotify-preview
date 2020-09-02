@@ -30,13 +30,16 @@ Go to your [dashboard](https://developer.spotify.com/dashboard/applications) her
 ![dashboard](./Readme/clientid1.png)
 
 Click on create app
+
 ![create](./Readme/clientid2.png)
 
 
 Click on edit settings and fill redirect URIs
+
 ![redirect uris](./Readme/clientid4.png)
 
 That's it
+
 ![clientid](./Readme/clientid3.png)
 ## Developpement
 
